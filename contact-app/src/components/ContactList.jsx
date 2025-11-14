@@ -1,6 +1,6 @@
 import ContactItem from "./ContactItem.jsx";
 
-export default function ContactList({ contacts }) {
+export default function ContactList({ contacts, onDelete }) {
   return (
     <section>
       <h2>Daftar Kontak</h2>
@@ -10,7 +10,7 @@ export default function ContactList({ contacts }) {
       ) : (
         <ul>
           {contacts.map((contact) => (
-            <ContactItem key={contact.id} contact={contact} />
+            <ContactItem key={contact.id} contact={contact} onDelete={onDelete} />
           ))}
         </ul>
       )}

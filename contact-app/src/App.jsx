@@ -38,11 +38,15 @@ export default function App() {
     setContacts((prev) => [...prev, newContact]);
   };
 
+  const handleDeleteContact = (id) => {
+    setContacts((prev) => prev.filter((contact) => contact.id !== id));
+  };
+
   return (
     <div>
       <Header total={contacts.length} />
-      <ContactForm onAddContact={handleAddContact} />
-      <ContactList contacts={contacts} />
+      <ContactForm tambahKontak={handleAddContact} />
+      <ContactList contacts={contacts} onDelete={handleDeleteContact} />
 
       <Footer />
     </div>
