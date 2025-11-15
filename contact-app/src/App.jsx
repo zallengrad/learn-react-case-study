@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import ContactList from "./components/ContactList.jsx";
 import ContactForm from "./components/ContactForm.jsx";
+import ContactDetail from "./components/ContactDetail.jsx";
 
 const intitialContacts = [
   {
@@ -45,8 +47,25 @@ export default function App() {
   return (
     <div>
       <Header total={contacts.length} />
-      <ContactForm tambahKontak={handleAddContact} />
-      <ContactList contacts={contacts} onDelete={handleDeleteContact} />
+
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Daftar Kontak</Link>
+          </li>
+          <li>
+            <Link to="/add">Tambah Kontak</Link>
+          </li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<ContactList contacts={contacts} onDelete={handleDeleteContact} />} />
+
+        <Route path="/add" element={<ContactForm tambahKontak={handleAddContact} />} />
+
+        <Route path="/contacts/:id" element={<ContactDetail contacts={contacts} />} />
+      </Routes>
 
       <Footer />
     </div>

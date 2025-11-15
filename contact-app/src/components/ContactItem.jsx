@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ContactItem({ contact, onDelete }) {
   const { id, name, email, phone } = contact;
 
